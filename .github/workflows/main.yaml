@@ -1,0 +1,27 @@
+name:deploy to render 
+on:
+push:
+branches:
+-main 
+pull-request:
+branches:
+-main
+
+jobs:
+build=and-deploy
+runs-on: ubuntu-latest
+steps:
+-name: checkout code
+uses: action/check@v2
+
+name: set up node.js
+-uses:
+action/setup-node@v2
+       with:
+			 node-version '16'
+		-name: deploy render
+	run:
+ name:|curl -x post\ -h
+ "Authorization: Bearer
+
+
