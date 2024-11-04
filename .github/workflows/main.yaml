@@ -1,27 +1,23 @@
-name:deploy to render 
-on:
-push:
-branches:
--main 
-pull-request:
-branches:
--main
+# Workflow name
+name: deploy to render
+# event >> trigger
+on: ["push", "pull_request"]
 
 jobs:
-build=and-deploy
-runs-on: ubuntu-latest
-steps:
--name: checkout code
-uses: action/check@v2
+  # name
+  build-and-deploy:
+	  # OS or Platform
+    runs-on: ubuntu-latest
 
-name: set up node.js
--uses:
-action/setup-node@v2
-       with:
-			 node-version '16'
-		-name: deploy render
-	run:
- name:|curl -x post\ -h
- "Authorization: Bearer
+    # steps
+    steps:
+      - uses: action/check@v3
+      - uses: action/setup-node@v4
+        with: 
+         node-version: 18
+
+			#run the Script file				 
+      - name: deploy render
+        run: npm install
 
 
