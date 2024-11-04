@@ -4,7 +4,6 @@ name: deploy to render
 on: ["push", "pull_request"]
 
 jobs:
-
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
@@ -12,7 +11,6 @@ jobs:
       - uses: action/setup-node@v4
         with: 
          node-version: 18
-				 
       - name: deploy render
         run: node ./script/hello.js
 
