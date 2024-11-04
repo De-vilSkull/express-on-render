@@ -1,5 +1,5 @@
 # Workflow name
-name: deploy to render
+name: main
 # event >> trigger
 on: ["push", "pull_request"]
 
@@ -7,7 +7,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/check@v3
+      - uses: action/checkout@v3
       - uses: action/setup-node@v4
         with: 
          node-version: 18
