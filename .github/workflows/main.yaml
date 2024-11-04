@@ -15,20 +15,20 @@ jobs:
          node-version: 18
 
       - name: install dependancies
-        run: node ./script/hello.js
+        run: npm install
 
-  #  Deploying_the_App:
-  #    needs: [building the app]
-  #    runs-on: ubuntu latest
+   Deploying_the_App:
+     needs: [building_the_app]
+     runs-on: ubuntu-latest
 
-  #    steps:
-  #    - name: Deploy to Render
-  #      env:
-  #      Render_API_key: ${{ secrets.RENDER_API_KEY }}
-  #      SERVICE_ID: ${{ secrets.SERVICE_ID }}
+     steps:
+       - name: Deploy to Render
+         env:
+           RENDER_API_key: ${{ secrets.RENDER_API_KEY }}
+           SERVICE_ID: ${{ secrets.SERVICE_ID }}
 
-  #    run: | 
-  #      curl -x POST -H "Authorization: Bearer $RENDER_API_KEY" 
-  #                -H "content-Type: application/json"\
-  #                -d'{"serviceId": "${SERVICE_ID}"}.\
-  #                https://api.render,com/v1/services/${SERVICE_ID}/depoy
+         run: |
+          curl -x POST -H "Authorization: Bearer $RENDER_API_KEY" \
+                 -H "content-Type: application/json" \
+                 -d'{"serviceId": "${SERVICE_ID}"}' \
+                 https://api.render,com/v1/services/${SERVICE_ID}/deploys
