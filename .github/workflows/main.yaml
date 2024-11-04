@@ -4,20 +4,16 @@ name: deploy to render
 on: ["push", "pull_request"]
 
 jobs:
-  # name
-  build-and-deploy:
-	  # OS or Platform
-    runs-on: ubuntu-latest
 
-    # steps
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
       - uses: action/check@v3
       - uses: action/setup-node@v4
         with: 
          node-version: 18
-
-			#run the Script file				 
+				 
       - name: deploy render
-        run: npm install
+        run: node ./script/hello.js
 
 
